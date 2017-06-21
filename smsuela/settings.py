@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-DEBUG = True
+DEBUG = os.environ["DEBUG"]
 
 ALLOWED_HOSTS = ['*']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -58,7 +58,8 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config()
+if not DEBUG:
+    DATABASES['default'] = dj_database_url.config()
 
 
 AUTH_PASSWORD_VALIDATORS = [
