@@ -5,7 +5,6 @@ from django.shortcuts import (
 )
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-
 from .forms import NumberForm
 from .models import Number
 
@@ -15,8 +14,10 @@ from django.views.generic import ListView
 class NumberList(ListView):
     model = Number
 
+
 def index(request):
     return render(request, 'home/index.html')
+
 
 def new_number(request):
     if request.method == 'POST':

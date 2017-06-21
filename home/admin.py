@@ -4,5 +4,5 @@ from .models import Number
 
 @admin.register(Number)
 class AdminClient(admin.ModelAdmin):
-    list_display = ('phone_number', 'created')
-    list_filter = ('phone_number', 'created')
+    list_display = ('phone_number', 'created_at')
+    list_filter = ('phone_number', 'created_at')
