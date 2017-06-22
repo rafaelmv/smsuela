@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
+{% extends '../base.html' %}
+
+{% block content %}
   <ul>
     {% for nb in object_list %}
       <li>
@@ -15,5 +11,4 @@
   <a href="{% url "home:new" %}">
     Add new number
   </a>
-</body>
-</html>
+{% endblock content %}

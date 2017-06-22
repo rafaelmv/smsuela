@@ -13,10 +13,19 @@ from django.views.generic import ListView
 
 class NumberList(ListView):
     model = Number
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(NumberList, self).get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['title'] = 'Números'
+        return context
 
 
 def index(request):
-    return render(request, 'home/index.html')
+    context = {
+        'title': 'SMSuela'
+    }
+    return render(request, 'home/index.html', context)
 
 
 def new_number(request):
@@ -31,7 +40,8 @@ def new_number(request):
 
     template = loader.get_template('home/new_number.html')
     context = {
-        'form': form
+        'form': form,
+        'title': 'Agregar número'
     }
 
     return HttpResponse(template.render(context, request))
