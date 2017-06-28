@@ -7,10 +7,11 @@ from django.shortcuts import (
 )
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import NumberForm, MessageForm
-from .models import Number
 from django.conf import settings
 from django.views.generic import ListView
+
+from .forms import NumberForm, MessageForm
+from .models import Number
 
 from twilio.rest import Client
 

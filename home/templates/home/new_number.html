@@ -2,11 +2,15 @@
 
 {% block content %}
 
-  <h2>New phone number</h2>
+  <h2>Agregar número telefónico</h2>
 
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Submit</button>
+    <button type="submit">Agregar</button>
   </form>
+
+  <a href="{% url "home:hello" %}">Enviar mensaje</a> |
+  <a href="{% url "home:number_list" %}">Números actuales</a>
+
 {% endblock content %}

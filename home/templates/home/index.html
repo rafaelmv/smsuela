@@ -2,18 +2,26 @@
 
 {% block content %}
   <h1>
-    Welcome!
+    ¡Bienvenido!
   </h1>
 
-  <h2>
-    Enviar nuevo mensaje:
-  </h2>
+  {% if all_numbers %}
 
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-  </form>
+    <h2>
+      Enviar nuevo mensaje:
+    </h2>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+
+  {% else %}
+
+    <p>No hay números registrados aún.</p>
+
+  {% endif %}
 
   {% for number in all_numbers %}
     <p>{{ number.phone_number }}</p>

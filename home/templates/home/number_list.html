@@ -1,15 +1,26 @@
 {% extends '../base.html' %}
 
 {% block content %}
-  <ul>
-    {% for nb in object_list %}
-      <li>
-        {{ nb.phone_number }} 
-      </li>
-    {% endfor %}
-  </ul>
-  <a href="{% url "home:new" %}">
-    Add new number
-  </a>
+  <h2>Números registrados</h2>
+
+  {% if object_list %}
+
+    <ul>
+      {% for nb in object_list %}
+        <li>
+          {{ nb.phone_number }}
+        </li>
+      {% endfor %}
+    </ul>
+
+  {% else %}
+
+    <p>No hay números registrados aún.</p>
+
+  {% endif %}
+
+    <a href="{% url "home:new" %}">Agregar número</a> |
+  <a href="{% url "home:hello" %}">Enviar mensaje</a>
+
 
 {% endblock content %}
