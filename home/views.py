@@ -9,6 +9,9 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.views.generic import ListView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .forms import NumberForm, MessageForm
 from .models import Number
@@ -18,7 +21,9 @@ from twilio.rest import Client
 
 client = Client(settings.ACCOUNT_SID, settings.AUTH_TOKEN)
 
-class NumberList(ListView):
+
+class NumberList(LoginRequiredMixin, ListView):
+    login_url = '/login/'
     model = Number
 
     def get_context_data(self, **kwargs):
@@ -27,6 +32,7 @@ class NumberList(ListView):
         return context
 
 
+@login_required(login_url='/login')
 def index(request):
 
     all_numbers = Number.objects.all()
@@ -54,6 +60,7 @@ def index(request):
     return render(request, 'home/index.html', context)
 
 
+@login_required(login_url='/login')
 def new_number(request):
     if request.method == 'POST':
         form = NumberForm(request.POST)
