@@ -29,7 +29,6 @@ class NumberList(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(NumberList, self).get_context_data(**kwargs)
-        context['title'] = 'Números'
         return context
 
 
@@ -56,7 +55,6 @@ def index(request):
 
     context = {
         'form': form,
-        'title': 'SMSuela',
         'all_numbers': all_numbers,
     }
     return render(request, 'home/index.html', context)
@@ -77,7 +75,6 @@ def new_number(request):
     template = loader.get_template('home/new_number.html')
     context = {
         'form': form,
-        'title': 'Agregar número'
     }
 
     return HttpResponse(template.render(context, request))
