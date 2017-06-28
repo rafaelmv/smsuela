@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static from staticfiles %}
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>{{ title }}</title>
+
+  <link rel="stylesheet" href="{% static "css/lib/normalize.css" %}">
+  <link rel="stylesheet" href="{% static "css/base.css" %}">
 </head>
 <body>
-  {% block content %}{% endblock content %}
 
-  {% if user.is_authenticated %}
-    <a href="{% url "logout" %}">Cerrar Sesión</a>
-  {% endif %}
+  <section class="wrapper">
+    {% block content %}{% endblock content %}
+  </section>
+
+  <footer class="wrapper">
+    {% if user.is_authenticated %}
+      <a href="{% url "logout" %}" class="link">Cerrar Sesión</a>
+    {% endif %}
+  </footer>
 </body>
 </html>

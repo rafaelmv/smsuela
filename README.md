@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 Run migrations into your database:
 ```
-python mamange.py migrate
+python manange.py migrate
 ```
 
 Finally run the application with:

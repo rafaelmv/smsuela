@@ -7,7 +7,7 @@ class NumberForm(forms.ModelForm):
         model = Number
         fields = ['phone_number']
         labels = {
-            'phone_number': 'Número de teléfono'
+            'phone_number': 'Número de teléfono (12 dígitos)'
         }
 
     def clean_phone_number(self):
@@ -16,4 +16,4 @@ class NumberForm(forms.ModelForm):
 
 
 class MessageForm(forms.Form):
-    body_message = forms.CharField(label='Tu mensaje (12 dígitos)', max_length=153, required=False)
+    body_message = forms.CharField(label='Tu mensaje', max_length=153, required=False)

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab:300,400');
+
+html {
+  font-family: 'Zilla Slab', serif;
+  font-size: 16px;
+}
+
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+footer.wrapper {
+  margin-top: 1em;
+}
+
+section.wrapper {
+  margin-top: 3em;
+}
+
+section.wrapper form label {
+  width: 25%;
+  clear: right;
+  text-align: left;
+  padding: 0;
+}
+
+section.wrapper form input[type='text'], input[type='password'], label {
+  float: left;
+  width: 75%;
+  margin: 0 0 2em 0;
+  padding: 0;
+  border: none;
+}
+
+section.wrapper form input[type='text'], input[type='password'] {
+  border-bottom: 1px solid #9a9a9a;
+  outline: none;
+}
+
+section.wrapper form button[type='submit'] {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-family: 'Zilla Slab', serif;
+  background-color: #e8e5e5;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+
+section.wrapper .link {
+  text-decoration: none;
+  color: #0079ff;
+}
+
+footer.wrapper .link {
+  text-decoration: none;
+  color: #ff004e;
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    width: 25%;
+  }
+}

@@ -27,8 +27,8 @@
     <p>{{ number.phone_number }}</p>
   {% endfor %}
 
-  <a href="{% url "home:new" %}">Agregar número</a> |
-  <a href="{% url "home:number_list" %}">Números actuales</a>
+  <a href="{% url "home:new" %}" class="link">Agregar número</a> |
+  <a href="{% url "home:number_list" %}" class="link">Números actuales</a>
 
 {% endblock content %}
 
