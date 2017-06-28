@@ -14,7 +14,12 @@ Install all the requirements with:
 pip install -r requirements.txt
 ```
 
-Then run the application with:
+Run migrations into your database:
+```
+python mamange.py migrate
+```
+
+Finally run the application with:
 ```
 python manage.py runserver
 ```
@@ -24,7 +29,7 @@ It is necessary to use Python2.7 or above.
 ## Purpose
 
 This entire application was created in order to inform people who live
-in areas with poor connection around Venezuela.
+in areas with poor connection around Venezuela 🇻🇪.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
