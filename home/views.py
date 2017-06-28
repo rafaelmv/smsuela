@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from django.shortcuts import (
     render,
     get_object_or_404,
@@ -27,17 +29,19 @@ class NumberList(ListView):
 def index(request):
 
     all_numbers = Number.objects.all()
+
     if request.method == 'POST':
         form = MessageForm(request.POST)
         if form.is_valid():
-            body_message = form.cleaned_data.get('body_message')
+            body_message = form.cleaned_data['body_message']
             for number in all_numbers:
+
                 client.messages.create(
                     to=str(number.phone_number),
                     from_="+12092088123",
-                    body=str(body_message),)
+                    body=str(body_message))
 
-            return None
+            return HttpResponseRedirect('/')
     else:
         form = MessageForm()
 
