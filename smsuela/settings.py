@@ -1,6 +1,7 @@
 import os
 from django.core.wsgi import get_wsgi_application
 import dj_database_url
+from twilio.rest import Client
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -79,6 +80,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Twilio Settings
+ACCOUNT_SID = os.environ["TWILIO_SID"]
+AUTH_TOKEN = os.environ["TWILIO_TOKEN"]
 
 LANGUAGE_CODE = 'en-us'
 

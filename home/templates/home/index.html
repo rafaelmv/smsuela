@@ -5,6 +5,20 @@
     Welcome!
   </h1>
 
+  <h2>
+    Enviar nuevo mensaje:
+  </h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+
+  {% for number in all_numbers %}
+    <p>{{ number.phone_number }}</p>
+  {% endfor %}
+
   <a href="{% url "home:new" %}">Agregar número</a> |
   <a href="{% url "home:number_list" %}">Números actuales</a>
 
