@@ -1,15 +1,14 @@
 import os
 from django.core.wsgi import get_wsgi_application
-import dj_database_url
-from twilio.rest import Client
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 INSTALLED_APPS = [
@@ -63,8 +62,6 @@ DATABASES = {
     }
 }
 
-if os.environ["DEBUG"] == "False":
-    DATABASES['default'] = dj_database_url.config()
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,9 +95,13 @@ USE_L10N = True
 USE_TZ = True
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, '../static')
 ]
 
 STATIC_URL = '/static/'
 
 STATIC_ROOT = 'staticfiles'
+
+MEDIA_ROOT = 'media'
+
+MEDIA_URL = '/media/'

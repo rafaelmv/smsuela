@@ -6,7 +6,7 @@ Web application to send SMS to multiple phone numbers with Twilio.
 
 **Twilio active account required**
 
-You need to generate your Twilio credentials in the `settings.py` file
+You need to generate your Twilio credentials in the `common.py` file
 or in your `ENV_VARS`, also you need a `SECRET_KEY` for your project.
 
 Install all the requirements with:
