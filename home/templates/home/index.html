@@ -11,10 +11,16 @@
       Enviar nuevo mensaje:
     </h2>
 
+    {% if messages %}
+      {% for message in messages %}
+        <h3{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+      {% endfor %}
+    {% endif %}
+
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Submit</button>
+      <button type="submit">Enviar</button>
     </form>
 
   {% else %}
@@ -22,10 +28,6 @@
     <p>No hay números registrados aún.</p>
 
   {% endif %}
-
-  {% for number in all_numbers %}
-    <p>{{ number.phone_number }}</p>
-  {% endfor %}
 
   <a href="{% url "home:new" %}" class="link">Agregar número</a> |
   <a href="{% url "home:number_list" %}" class="link">Números actuales</a>

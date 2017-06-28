@@ -11,6 +11,7 @@ from django.conf import settings
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 
 from .forms import NumberForm, MessageForm
@@ -48,6 +49,7 @@ def index(request):
                     from_="+12092088123",
                     body=str(body_message))
 
+            messages.success(request, 'Mensaje enviado.')
             return HttpResponseRedirect('/')
     else:
         form = MessageForm()
@@ -67,6 +69,7 @@ def new_number(request):
         if form.is_valid():
             number = form.save(commit=False)
             number.save()
+            messages.success(request, 'Número guardado.')
             return HttpResponseRedirect('/numbers')
     else:
         form = NumberForm()

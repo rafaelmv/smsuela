@@ -4,6 +4,12 @@
 
   <h2>Agregar número telefónico</h2>
 
+  {% if messages %}
+    {% for message in messages %}
+      <h3{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+    {% endfor %}
+  {% endif %}
+
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

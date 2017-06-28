@@ -60,6 +60,10 @@ footer.wrapper .link {
   color: #ff004e;
 }
 
+.wrapper .success {
+  color: #14d814;
+}
+
 @media (min-width: 800px) {
   .wrapper {
     width: 25%;
