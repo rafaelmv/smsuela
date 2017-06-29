@@ -9,6 +9,13 @@
 {% block content %}
   <h2>Números registrados</h2>
 
+
+  {% if messages %}
+    {% for message in messages %}
+      <h3{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+    {% endfor %}
+  {% endif %}
+
   {% if object_list %}
 
     <ul>
