@@ -16,4 +16,4 @@ class NumberForm(forms.ModelForm):
 
 
 class MessageForm(forms.Form):
-    body_message = forms.CharField(label='Tu mensaje', max_length=153, required=False)
+    body_message = forms.CharField(label='Tu mensaje', max_length=160, required=False)
