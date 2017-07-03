@@ -40,7 +40,11 @@ def index(request):
     if request.method == 'POST':
         form = MessageForm(request.POST)
         if form.is_valid():
-            body_message = form.cleaned_data['body_message']
+            text_message = form.save(commit=False)
+            text_message.save()
+
+            body_message = form.cleaned_data['text_message']
+
             for number in all_numbers:
 
                 client.messages.create(
