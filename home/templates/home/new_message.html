@@ -1,0 +1,47 @@
+{% extends '../base.html' %}
+
+{% block title %}
+  <title>
+    SMSuela 🇻🇪
+  </title>
+{% endblock %}
+
+{% block content %}
+  <h1>
+    ¡Bienvenido! 🇻🇪
+  </h1>
+
+  {% if all_numbers %}
+
+    <h2>
+      Enviar nuevo mensaje:
+    </h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <h3{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Enviar</button>
+    </form>
+
+  {% else %}
+
+    <p>No hay números registrados aún.</p>
+
+  {% endif %}
+
+  <a href="{% url "home:new" %}" class="link">Agregar número</a> |
+  <a href="{% url "home:number_list" %}" class="link">Números actuales</a>
+
+{% endblock content %}
+
+
+
+
+
+

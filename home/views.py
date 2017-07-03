@@ -2,8 +2,7 @@
 
 from django.shortcuts import (
     render,
-    get_object_or_404,
-    redirect
+    get_object_or_404
 )
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
@@ -15,12 +14,20 @@ from django.contrib import messages
 
 
 from .forms import NumberForm, MessageForm
-from .models import Number
+from .models import Number, Message
 
 from twilio.rest import Client
 
 
 client = Client(settings.ACCOUNT_SID, settings.AUTH_TOKEN)
+
+
+def home_page(request):
+    last_ten_messages = Message.objects.all().order_by('created_at')[:10]
+    context = {
+        'last_ten_messages': last_ten_messages
+    }
+    return render(request, 'home/index.html', context)
 
 
 class NumberList(LoginRequiredMixin, ListView):
@@ -33,7 +40,7 @@ class NumberList(LoginRequiredMixin, ListView):
 
 
 @login_required(login_url='/login')
-def index(request):
+def new_message(request):
 
     all_numbers = Number.objects.all()
 
@@ -53,7 +60,7 @@ def index(request):
                     body=str(body_message))
 
             messages.success(request, 'Mensaje enviado.')
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/message/new/')
     else:
         form = MessageForm()
 
@@ -61,7 +68,7 @@ def index(request):
         'form': form,
         'all_numbers': all_numbers,
     }
-    return render(request, 'home/index.html', context)
+    return render(request, 'home/new_message.html', context)
 
 
 @login_required(login_url='/login')

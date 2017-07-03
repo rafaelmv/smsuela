@@ -22,6 +22,3 @@ class MessageForm(forms.ModelForm):
         labels = {
             'text_message': 'Tu mensaje'
         }
-
-#class MessageForm(forms.Form):
-#    body_message = forms.CharField(label='Tu mensaje', max_length=160, required=False)

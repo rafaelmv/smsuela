@@ -16,10 +16,6 @@
     {% block content %}{% endblock content %}
   </section>
 
-  <footer class="wrapper">
-    {% if user.is_authenticated %}
-      <a href="{% url "logout" %}" class="link">Cerrar Sesión</a>
-    {% endif %}
-  </footer>
+  {% include 'footer.html' %}
 </body>
 </html>

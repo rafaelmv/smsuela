@@ -81,7 +81,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ACCOUNT_SID = os.environ["TWILIO_SID"]
 AUTH_TOKEN = os.environ["TWILIO_TOKEN"]
 
-LOGIN_REDIRECT_URL = 'home:hello'
+LOGIN_REDIRECT_URL = 'home:login'
 
 LANGUAGE_CODE = 'en-us'
 
