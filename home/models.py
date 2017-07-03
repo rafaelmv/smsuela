@@ -10,6 +10,6 @@ class Number(models.Model):
         return self.phone_number
 
 class Message(models.Model):
-    text_message = models.CharField(max_length=255)
+    text_message = models.CharField(max_length=160)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

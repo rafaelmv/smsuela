@@ -1,5 +1,5 @@
 from django import forms
-from .models import Number
+from .models import Number, Message
 
 
 class NumberForm(forms.ModelForm):
@@ -15,5 +15,13 @@ class NumberForm(forms.ModelForm):
         return '+' + data
 
 
-class MessageForm(forms.Form):
-    body_message = forms.CharField(label='Tu mensaje', max_length=160, required=False)
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields =  ['text_message']
+        labels = {
+            'text_message': 'Tu mensaje'
+        }
+
+#class MessageForm(forms.Form):
+#    body_message = forms.CharField(label='Tu mensaje', max_length=160, required=False)
